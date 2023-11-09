@@ -1,0 +1,73 @@
+#include <iostream>
+#include <fstream>
+
+
+using namespace std;
+ifstream f ("bac.in");
+
+int
+main ()
+{
+  int n, m, i, j, a[1000001],x,par;
+  f >> m >> n;
+  for (i = 1; i <= m; i++)
+    {
+      f >> a[i];
+    }
+  i = 1, j = 1;
+  f >> x;
+  if (a[i] < x)
+    {
+      cout << a[i] << " ";
+      i++;
+      par = a[i] % 2;
+    }
+  else
+  {
+    cout << x << " ";
+    par = x % 2;
+    f>>x;
+    j++;
+  }
+  while(i<=m && j<=n)
+  {
+      if(a[i]<x)
+      {
+          if(a[i]%2!=par)
+          {
+              cout<<a[i]<<" ";
+              par=a[i]%2;
+          }
+        i++;
+      }
+      else
+      {
+          if(x%2!=par)
+          {
+              cout<<x<<" ";
+              par=x%2;
+          }
+          f>>x;
+          j++;
+      }
+  }
+  while(i<=m)
+  {
+      if(a[i]%2!=par)
+      {
+          cout<<a[i]<<" ";
+          par=a[i]%2;
+      }
+      i++;
+  }
+  while(j<=n)
+  {
+      if(x%2!=par)
+      {
+          cout<<x<<" ";
+          par = x%2;
+      }
+      f>>x;
+      j++;
+  }
+}
