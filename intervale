@@ -1,0 +1,45 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+ifstream f("bac.txt");
+
+int
+cb (int n, int v[], int x)
+{
+  int st, dr, m;
+  st = 1;
+  dr = n;
+  while (st <= dr)
+    {
+      m = (st + dr) / 2;
+      if (v[m] == x)
+	return m;
+      else if (x > v[m])
+	st = m + 1;
+      else
+	dr = m - 1;
+    }
+  return st;
+}
+
+int
+main ()
+{
+    int a,b,i,v[100000],n,k=0;
+    f>>n;
+    for(i=1; i<=n; i++)
+    {
+        f>>v[i];
+    }
+    while(f>>a>>b)
+    {
+        a=cb(n,v,a);
+        //b=cb(n,v,b);
+        //if(a==b)
+        if(b<=v[a])
+            k++;
+    }
+    cout<<k;
+    f.close();
+}
